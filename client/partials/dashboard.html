@@ -1,0 +1,42 @@
+<h3>DASHBOARD</h3>
+<h5>Welcome {{userName}} <a href ng-click='logout()'>Logout</a></h5>
+
+<hr>
+<label>Search: <input ng-model="searchText"></label>
+<hr>
+
+<table>
+  <thead>
+    <tr>
+      <td>Category</td>
+      <td>Topic</td>
+      <td>Posted By</td>
+      <td>Posts</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat = 'topic in topics | filter:searchText'>
+      <td>{{topic.category}}</td>
+      <td><a href="#!/topic/{{topic._id}}">{{topic.topic}}</a></td>
+      <td><a href="#!/profile/{{topic.userId}}">{{topic.user}}</a></td>
+      <td>Data 4</td>
+    </tr>
+  </tbody>
+</table>
+
+<div>
+  <form ng-submit='createTopic()'>
+    <h5>Add A New Topic</h5>
+    <p>Topic: <input type="text" ng-model='newTopic.topic'></p>
+    <p>Description: <input type="text" ng-model='newTopic.description'></p>
+    <p>Category:
+      <select ng-model= 'newTopic.category'>
+        <option value="HTML">HTML</option>
+        <option value="MySQL">MySQL</option>
+        <option value="Ruby on Rails">Ruby on Rails</option>
+        <option value="JavaScript">JavaScript</option>
+      </select>
+    </p>
+    <input type="submit" value="Submit">
+  </form>
+</div>

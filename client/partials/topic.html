@@ -1,0 +1,33 @@
+<h3>TOPIC</h3>
+
+<a href="/">Dashboard</a>
+<a href="#">Logout</a>
+
+<br>
+
+<div>
+  <p>
+    <span style="font-weight:bold;"><a href="#!/profile/{{topicDetail.userId}}">{{topicDetail.user}}</a> posted a topic:</span>
+  </p>
+  <p><span style="font-weight:bold;">Topic:</span> {{topicDetail.topic}}</p>
+  <p><span style="font-weight:bold;">Description:</span> {{topicDetail.description}}</p>
+
+  <br>
+
+  <h4>POST YOUR ANSWER HERE...</h4>
+  <form ng-submit='createPost(topicDetail._id)'>
+    <input type="text" ng-model='post.post'>
+    <input type="submit" value="Post">
+  </form>
+</div>
+
+<br>
+<div ng-repeat = 'post in posts'>
+  <hr>
+  <p>USER: {{post.userId.user}}</p>
+  <p>POST: {{post.post}}</p>
+  <p>LIKES: {{post.like}}</p>
+  <p>DISLIKES: {{post.dislike}}</p>
+  <button type="button" ng-click='createLike(post._id)'>Like</button>
+  <button type="button" ng-click='createDislike(post._id)'>Dislike</button>
+</div>
